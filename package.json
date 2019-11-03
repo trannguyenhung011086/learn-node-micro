@@ -1,0 +1,27 @@
+{
+    "name": "learn-node-micro",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "Hung",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "eslint": "^6.6.0",
+        "micro": "^9.3.4",
+        "micro-fork": "^2.0.0",
+        "pug": "^2.0.4",
+        "urlencoded-body-parser": "^3.0.0",
+        "yup": "^0.27.0"
+    }
+}
