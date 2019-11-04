@@ -1,6 +1,5 @@
 const micro = require('micro');
 const pug = require('pug');
-const parse = require('urlencoded-body-parser');
 
 const home = (req, res) => {
     micro.send(
@@ -14,4 +13,5 @@ module.exports = {
     home: home,
     submit: require('./submit'),
     notFound: require('./notFound'),
+    registrations: require('./registrations'),
 };

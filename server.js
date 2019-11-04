@@ -2,12 +2,26 @@ require('dotenv').config();
 
 const micro = require('micro');
 const { router, get, post } = require('micro-fork');
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
+mongoose.connection
+    .on('connected', () =>
+        console.log(`Mongoose connection open on ${process.env.DATABASE}`),
+    )
+    .on('error', e => {
+        console.log(`Connection error: ${e.message}`);
+    });
 
 const routes = require('./routes');
 
 const Router = router()(
     get('/', routes.home),
     post('/', routes.submit),
+    get('/registrations', routes.registrations),
     get('*', routes.notFound),
 );
 

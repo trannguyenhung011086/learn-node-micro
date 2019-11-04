@@ -3,6 +3,8 @@ const pug = require('pug');
 const parse = require('urlencoded-body-parser');
 const yup = require('yup');
 
+const Models = require('../models');
+
 const validator = input =>
     yup
         .object()
@@ -17,6 +19,7 @@ const validator = input =>
 
 const submit = async (req, res) => {
     const body = await parse(req);
+
     try {
         await validator(body);
     } catch (e) {
@@ -31,6 +34,18 @@ const submit = async (req, res) => {
             }),
         );
         return;
+    }
+
+    await Models.Registration.create(body);
+    const cursor = Models.Registration.find()
+        .sort({ name: 1 })
+        .cursor();
+    for (
+        let doc = await cursor.next();
+        doc != null;
+        doc = await cursor.next()
+    ) {
+        console.log(doc);
     }
     micro.send(res, 200, 'Registered successfully!');
 };
