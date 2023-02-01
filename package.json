@@ -20,7 +20,7 @@
         "eslint": "^6.6.0",
         "micro": "^9.3.4",
         "micro-fork": "^2.0.0",
-        "mongoose": "^5.7.7",
+        "mongoose": "^5.13.15",
         "pug": "^2.0.4",
         "urlencoded-body-parser": "^3.0.0",
         "yup": "^0.27.0"
